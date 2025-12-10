@@ -61,3 +61,56 @@ def running_total(lst):
         result.append(summed)
         
     return result
+
+# 5
+
+def word_sizes(string):
+    lst = string.split()
+    counts = {}
+    
+    for word in lst:
+        if len(word) not in counts:
+            counts[len(word)] = 1
+        else:
+            counts[len(word)] += 1
+    
+    return counts
+
+# 6
+
+def word_sizes(string):
+    split_words = string.split()
+    alpha_counts = {}
+
+    for word in split_words:
+        alpha_word = ''
+        for char in word:
+            if char.isalpha():
+                alpha_word += char         
+        if len(alpha_word) not in alpha_counts:
+            alpha_counts[len(alpha_word)] = 1
+        else:
+            alpha_counts[len(alpha_word)] += 1
+
+    return alpha_counts
+
+# 7
+
+def swap(text):
+    split_words = text.split()
+    swapped_words = []
+    
+    for word in split_words:
+        first_letter = word[0]
+        middle = word[1:-1]
+        last_letter = word[-1]
+        
+        if len(word) > 1:
+            swapped_word = last_letter + middle + first_letter
+            swapped_words.append(swapped_word)
+        else:
+            swapped_word = first_letter
+            swapped_words.append(swapped_word)
+
+    swapped_string = ' '.join(swapped_words)
+    return swapped_string
