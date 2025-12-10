@@ -34,3 +34,30 @@ else:
 
 # 2
 
+def is_palindrome(string):
+    if string == string[::-1]:
+        return True
+    return False
+
+# 3
+
+def is_real_palindrome(string):
+    alnum_lower = ''
+    
+    for char in string:
+        if char.isalnum():
+            alnum_lower += char
+            
+    return alnum_lower.casefold() == alnum_lower.casefold()[::-1]
+
+# 4
+
+def running_total(lst):
+    result = []
+    summed = 0
+    
+    for num in lst:
+        summed += num
+        result.append(summed)
+        
+    return result
