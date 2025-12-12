@@ -182,3 +182,47 @@ def string_to_signed_integer(string_num):
         return value
     
 # 10
+# Creating used_num is kind of ugly, but worked
+
+DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+def integer_to_string(num):
+    result = ''
+    
+    used_num = num
+    
+    while used_num > 0:
+        quo, rem = divmod(used_num, 10)
+        result = DIGITS[rem] + result
+        used_num = quo
+        
+    if num == 0:
+        result = DIGITS[0]
+        
+    return result
+
+# 11
+
+DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+def signed_integer_to_string(num):
+    result = ''
+    used_num = 0
+    
+    if num > 0:
+        used_num = num
+    elif num < 0:
+        used_num = -num
+    else:
+        return '0'
+    
+    while used_num > 0:
+        quo, rem = divmod(used_num, 10)
+        result = DIGITS[rem] + result
+        used_num = quo
+        
+    if num > 0:
+        result = '+' + result
+    elif num < 0:
+        result = '-' + result  
+    return result
