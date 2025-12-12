@@ -119,6 +119,7 @@ def swap(text):
 
 # This one is interesting. I thought about the integers in ASCII, and if it is possible to build some intra-comparison between the numbers within the program.
 # LSBot hinted me that, since the integers are in order, subtracting ord('0') from each number in the parameter will get you the integer of each string number.
+# According to LSBot `ord` is not a standard conversion function like `int`, so it's within the rules of the exercise.
 # I got to here, a list of the integers we need, but couldn't figure out a way to combine them:
 
 def string_to_integer(string_num):
@@ -146,3 +147,38 @@ def string_to_integer(string_num):
     return value
 
 print(string_to_integer("4321") == 4321) # value: 4, 43, 432, 4321
+
+# Further exploration:
+
+def hexadecimal_to_integer(hex_string):
+    HEX_DIGITS = {
+    '0': 0, '1': 1, '2': 2, '3': 3, '4': 4,
+    '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
+    'a': 10, 'b': 11, 'c': 12, 'd': 13, 'e': 14, 'f': 15,
+}
+    
+    value = 0 
+    for char in hex_string.casefold(): # Hexadecimal numbers are case-insensitive
+        digit = HEX_DIGITS[char]
+        value = (16 * value) + digit
+    return value
+
+# 9 (a bit ugly)
+
+def string_to_signed_integer(string_num):
+    value = 0
+
+    for el in string_num:
+        if el == "+" or el == "-":
+            continue
+        digit = ord(el) - ord('0')
+        value = (10 * value) + digit
+        
+    if string_num[0] == "+":
+        return value
+    elif string_num[0] == "-":
+        return -value
+    else:
+        return value
+    
+# 10
