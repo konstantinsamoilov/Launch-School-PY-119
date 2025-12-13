@@ -26,8 +26,11 @@ CIRCLE = 360
 def dms(flt):
     degrees = str(flt)
     
+    if flt < -360:
+        # ...
+    
     if -360 < flt < 0:
-        # return ...
+        return f"{CIRCLE + flt}{DEGREE}00'00\""
     
     elif flt > 360:
         return f"{flt - CIRCLE}{DEGREE}00'00\""
