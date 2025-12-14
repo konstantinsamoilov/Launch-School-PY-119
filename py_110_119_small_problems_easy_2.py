@@ -18,7 +18,7 @@ def dms(flt):
         
         return f"{split_degrees[0]}{DEGREE}{int(minutes):02}'{int(seconds):02}\""
 
-# Further exploration (ongoing...):
+# Further exploration:
 
 DEGREE = "\u00B0"
 CIRCLE = 360
@@ -26,8 +26,11 @@ CIRCLE = 360
 def dms(flt):
     degrees = str(flt)
     
-    if flt < -360:
-        # ...
+    if flt < -360: # LSBot helped figure this out
+        degree_of_very_negative_float = flt
+        while degree_of_very_negative_float < 0:
+            degree_of_very_negative_float += 360
+        return f"{degree_of_very_negative_float}{DEGREE}00'00\""
     
     if -360 < flt < 0:
         return f"{CIRCLE + flt}{DEGREE}00'00\""
@@ -110,4 +113,70 @@ def interleave(list1, list2):
 
 # 6:
 
-# ...
+def multiplicative_average(lst):
+    result = 1
+    
+    for num in lst:
+        result = result * num
+        
+    result = result / len(lst)
+    
+    return f"{result:.3f}"
+
+# 7:
+
+list1 = [3, 5, 7]
+list2 = [9, 10, 11]
+
+def multiply_list(l1, l2):
+    result = []
+    
+    for el1, el2 in zip(l1, l2):
+        result.append(el1 * el2)
+    return result
+
+# 8 (sigh, the official solution is a very simple comprehension... next time):
+
+DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+
+def digit_list(num):
+    str_num = str(num)
+    
+    result = []
+          
+    for el in str_num:
+        result.append(DIGITS[el])
+    return result
+
+# 9 (using set to print):
+
+vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck',
+            'motorcycle', 'motorcycle', 'car', 'truck']
+
+def count_occurrences(lst):
+    result = []
+    for el in lst:
+        result.append(f'{el} => {lst.count(el)}')
+    
+    set_result = set(result)
+    
+    for el in set_result:
+        print(el)
+
+count_occurrences(vehicles)
+
+# Further exploration:
+
+
+
+# 10 (forgot about sum):
+
+def average(lst):
+    result = 0
+    
+    for num in lst:
+        result += num
+        
+    result //= len(lst)
+    
+    return result
