@@ -165,9 +165,27 @@ def count_occurrences(lst):
 
 count_occurrences(vehicles)
 
-# Further exploration:
+# Further exploration (LSBot helped):
 
+vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck',
+            'motorcycle', 'motorcycle', 'car', 'truck', 'suv']
 
+def count_occurrences(lst):
+    processed_words = []
+    
+    for el in lst:
+        if el.lower() in processed_words:
+            continue
+        count = 0
+        for item_to_check in lst: # "holding" on each element el and comparing it to every other in the list, other than those that get added to processed_words 
+            if item_to_check.lower() == el.lower():
+                count += 1
+            
+        print(f'{el} => {count}')
+          
+        processed_words.append(el.lower())
+
+count_occurrences(vehicles)
 
 # 10 (forgot about sum):
 
